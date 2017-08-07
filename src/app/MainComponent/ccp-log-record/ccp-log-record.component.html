@@ -1,0 +1,110 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">历史记录列表视图</h1>
+</div>
+<div class="wrapper-md" >
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">查询</div>
+        
+        <div class="form-horizontal panel-body">
+
+            <label id="sq" class="control-label pull-left col-md-1">手机号码</label>
+            <div class="col-md-2 form-group date has-feedback">
+               <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.phone"  placeholder="请输入手机号码"> <!--pattern="^1+\d{10}"-->
+            </div>
+
+             <label id="sq" class="control-label pull-left col-md-1">车牌号</label>
+            <div class="col-md-2 form-group date has-feedback">
+               <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.carCode" placeholder="请输入车牌号">
+            </div>
+
+            <label class="control-label pull-left  col-md-1">司机姓名</label>
+            <div class="col-md-2 form-group">
+                <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.name"  placeholder="请输入司机姓名"><!--pattern="^1+\d{10}"-->
+            </div>
+
+            <label id="sq" class="control-label pull-left col-md-1">认证起始时间</label>
+            <div class="col-md-2 form-group date has-feedback">
+               
+                <input class="form-control" placeholder="认证起始时间"
+                    dateFormat="YYYY-MM-DD HH:mm"
+                    name="dp" 
+                    [(ngModel)]="queryParameter.startTime" 
+                    [showTimePicker]="true" 
+                    reDatePicker #datePicker1="datePicker"
+                    (click)="datePicker1.toggle($event)"
+                    locale="zh_cn"
+                >
+                <span id="startTime" class="form-control-feedback curpoint">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>    
+            </div>
+
+        </div>
+
+        <div class="form-horizontal panel-body">
+
+            <label id="sq" class="control-label pull-left col-md-1">认证结束时间</label>
+            <div class="col-md-2 form-group date has-feedback">
+               
+                <input class="form-control" placeholder="认证结束时间"
+                    dateFormat="YYYY-MM-DD HH:mm"
+                    name="dp" 
+                    [(ngModel)]="queryParameter.endTime" 
+                    [showTimePicker]="true" 
+                    reDatePicker #datePicker2="datePicker"
+                    (click)="datePicker2.toggle($event)"
+                    locale="zh_cn"
+                >
+                <span id="endTime" class="form-control-feedback curpoint">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>    
+            </div>        
+            
+            <!--<div class="line line-xs pull-in"></div>-->
+            <label class="control-label pull-left  col-md-1"></label>
+            <div class="col-md-2 form-group">
+                <button (click)="query()" class="btn btn-sm btn-default btn-addon" ng-class="{'disabled':seeks}" ng-disabled="seeks">
+                    <i class="fa fa-search" *ngIf="!seeks"></i>
+                    <i *ngIf="seeks">
+                        <b class="fa fa-spinner no-bordr"  ng-class="{'fa-spin':seeks}"></b>
+                    </i>
+                    <span *ngIf="!seeks">查询</span>
+                    <span *ngIf="seeks">查询中...</span>
+                </button>
+            </div>
+        </div>
+
+
+        <!--</div>-->
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">          
+            用户列表
+        </div>
+
+       <div class="table-responsive">
+            <table id="ccpLogRecord_table" class="table table-hover" >
+                <!--<div class="" >暂无数据</div>-->
+            </table>
+            <div class="no_data" *ngIf="!total" >暂无数据</div>
+          
+          
+        </div>
+        
+    </div>
+    <!--<app-paging [pageLength]="table.pageList" [total]="total" (pageChanged)="pchanged($event)"></app-paging>-->
+   
+    <div class="panel-body">
+        <app-pagination 
+                [total]="total" 
+                (pageIndexChange)="pchanged($event)"
+        ></app-pagination>
+     
+    </div>  
+
+     
+
+</div>
+
+
+

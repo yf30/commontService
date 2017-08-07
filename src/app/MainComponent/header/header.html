@@ -1,0 +1,41 @@
+<div class="navbar-header bg-black ">
+    <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+        <i class="glyphicon glyphicon-cog"></i>
+    </button>
+
+    <a href="#/app/homepage" class="navbar-brand text-lt">
+        <span class="hidden-folded m-l-lg ng-bind">{{app.name}}</span>
+    </a>
+</div>
+<div>
+    <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only" style="height:50px!important">
+        <div class="nav navbar-nav hidden-xs hid">
+            <!--<a  class="btn no-shadow navbar-btn" (changeIcon)="changeDedentIcon($event)">-->
+            <a class="btn no-shadow navbar-btn" (click)="changeDedentIcon()">
+                <i [ngClass]="faStyle.faDedent"></i>
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<li class="hidden-xs">
+                <a ui-fullscreen (click)="changeExpandIcon()">
+                    <i [ngClass]="faStyle.faExpand"></i>
+                </a>
+            </li>-->
+            <li class="dropdown" dropdown>
+                <a href class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                        <img src="../../assets/img/a0.jpg" alt="...">
+                        <i class="on md b-white bottom"></i>
+                    </span>
+                    <span class="hidden-sm hidden-md">{{realName}}</span> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight w">
+                    <li>
+                        <a (click)="logout()">注销</a>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="chart-content">
+
+    <div class="col-md-12">
+        <div class="col-lg-5 col-md-10 chart-area" *ngIf="SMSchart">
+            <div class="chart-title" >
+                <h6>当天发送总数：  {{smsnum}}条</h6>
+            </div>
+            <chart [options]="SMSchart"></chart>
+        </div>
+        <div class="col-lg-5 col-md-10 chart-area" *ngIf="MSGchart">
+            <div class="chart-title" >
+                <h6>发送总数：  {{msgnum}}条</h6>
+                <h6>未送达总数：  {{unmsgnum}}条</h6>
+            </div>
+            <chart [options]="MSGchart"></chart>
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="col-lg-5 col-md-10 chart-area" *ngIf="columnOptions">
+            <div class="chart-title">
+                <h6>新增基址：{{addbasenum}}  条</h6>
+                <h6>修正基址：{{editbasenum}} 条</h6>
+            </div>
+            <chart [options]="columnOptions"></chart>
+        </div>
+        
+        <div class="col-lg-5 col-md-10 chart-area" *ngIf="locationChart">
+            <div class="chart-title">
+                <h6>LBS定位次数：{{LBSnum}} 条</h6>
+                <h6>北斗定位次数：{{bdsnum}}  条</h6>
+                <h6>来货拉定位点数：{{cspnum}} 条</h6>
+            </div>
+            <chart [options]="locationChart"></chart>
+        </div>
+    </div>
+</div>
+
+
+

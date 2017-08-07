@@ -1,0 +1,101 @@
+
+
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">注册列表视图</h1>
+</div>
+<div class="wrapper-md" >
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">查询</div>
+        
+        <div class="form-horizontal panel-body">
+            
+            <label class="control-label pull-left col-md-1">车牌号</label>
+            <div class="col-md-2 form-group">
+                <!--ng-pattern="/^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{5}$/"-->
+                <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.carCode" placeholder="请输入手机号" name="carCode">
+            </div>
+
+
+
+            <label class="control-label pull-left col-md-1">手机号</label>
+            <div class="col-md-2 form-group">
+                <!--ng-pattern="/^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{5}$/"-->
+                <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.phone" placeholder="请输入手机号" name="carCode">
+            </div>
+
+
+            <label class="control-label pull-left  col-md-1">北斗定位状态</label>
+            <div class="col-md-2 form-group">
+                <select class="form-control" [(ngModel)]="queryParameter.BDLocationState">
+                    <option value="">全部</option>
+                    <option *ngFor="let item of registerStateList" [value]="item.value">{{item.text}}</option>
+                    
+                </select>
+                
+            </div>
+            <label class="control-label pull-left  col-md-1">基站定位状态</label>
+            <div class="col-md-2 form-group">
+                <select class="form-control" [(ngModel)]="queryParameter.BaseStationLocationState">
+                    <option value="">全部</option>
+                    <option *ngFor="let item of registerStateList" [value]="item.value">{{item.text}}</option>
+                    
+                </select>
+                
+            </div>
+
+
+            
+             <div class="line line-xs pull-in"></div>
+             <label class="control-label pull-left  col-md-1"></label>
+            <div class="col-md-2 form-group">
+                <button (click)="query()" class="btn btn-sm btn-default btn-addon" ng-class="{'disabled':seeks}" ng-disabled="seeks">
+                    <i class="fa fa-search" *ngIf="!seeks"></i>
+                    <i *ngIf="seeks">
+                        <b class="fa fa-spinner no-bordr"  ng-class="{'fa-spin':seeks}"></b>
+                    </i>
+                    <span *ngIf="!seeks">查询</span>
+                    <span *ngIf="seeks">查询中...</span>
+                </button>
+            </div>
+        </div>
+
+
+        <!--</div>-->
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            
+            注册列表
+            
+        </div>
+       <div class="table-responsive">
+            <table id="location_table" class="table table-hover" >
+                <!--<div class="" >暂无数据</div>-->
+            </table>
+            <div class="no_data" *ngIf="!total" >暂无数据</div>
+          
+          
+        </div>
+        
+    </div>
+    <!--<app-paging [pageLength]="table.pageList" [total]="total" (pageChanged)="pchanged($event)"></app-paging>-->
+
+   
+    <div class="panel-body">
+        <app-pagination 
+                [total]="total" 
+                (pageIndexChange)="pchanged($event)"
+        ></app-pagination> 
+
+     
+    </div>  
+     <div class="panel-body">
+        <button class="pull-right-xs btn btn-sm btn-primary btn-addon " (click)="export()" ><i class="fa fa-cloud-download"></i>导出</button>
+    
+    </div>  
+
+     
+
+</div>
+
+

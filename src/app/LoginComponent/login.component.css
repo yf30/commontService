@@ -1,0 +1,33 @@
+#login {
+    display: block;
+    height: 100%;
+    /*margin-top: -20px;*/
+}
+
+.wrapper-xls {
+    padding: 150px;
+}
+
+#register_form {
+    background: #334054;
+    background-size: 100%;
+    height: 100%;
+}
+
+.l-s-3xl strong {
+    letter-spacing: 3px;
+}
+
+#foot {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+#foot small {
+    width: 100%;
+    display: block;
+    padding: 15px 0;
+    background: #fff;
+    text-align: center;
+}

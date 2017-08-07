@@ -1,0 +1,37 @@
+chart {
+    display: block;
+    min-width: 400px;
+    max-width: 750px;
+    min-height: 400px;
+    margin-top:25px;
+}
+
+/*chart*/
+.chart-content{
+    margin-left:80px;
+    height: 100%;
+    display: inline-block;
+}
+
+.chart-title{
+   position: absolute;
+   left:30px;
+   top: 0px; 
+   font-size: 12px;
+   z-index: 1;
+}
+
+/*.chart-content{
+ background-color: #fff;
+}*/
+.chart-area{
+   margin-top:40px; 
+   margin-right:90px;
+   background-color: #fff;
+   height: 450px;
+}
+@media (min-width: 992px) {
+    .chart-area{
+        margin-right:20px;
+    }
+}

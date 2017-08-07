@@ -1,0 +1,13 @@
+.hasSended{
+    display: inline-block;
+    vertical-align:middle;
+    padding-top:5px;
+}
+.hasSended>input{
+    display: inline-block;
+    margin-right:5px;
+}
+.hasSended>label{
+    display: inline-block;
+    margin-right:25px;
+}

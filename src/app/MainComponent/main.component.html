@@ -1,0 +1,19 @@
+
+<div class="body " [ngClass]="{'app-aside-folded':isFolded}">
+    <div class=" body">
+        <div class="app-header navbar header-black">
+            <app-header (changeNavLeft)="changeLeft($event)"></app-header>
+        </div>
+        <div class="app-aside hidden-xs">
+            <app-nav-left></app-nav-left>
+        </div>
+            
+        <div class="app-content" role="main">
+            <div class="app-content-body fade-in-up">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+        <!--<app-footer></app-footer>-->
+    </div>
+</div>
+

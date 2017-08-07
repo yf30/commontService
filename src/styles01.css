@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+.no-records-found{
+    display: none
+}
+.no_data{
+    /*padding:5px 0;*/
+    display:inline-block;
+    width: 100%;
+    line-height:80px;
+    font-size: 40px;
+    text-align: center;
+    color: #dfdfdf;
+    /*padding-left:300px;*/
+}

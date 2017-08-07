@@ -1,0 +1,68 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">定位折线图</h1>
+</div>
+<div class="wrapper-md" >
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">查询</div>
+        <div class="form-horizontal panel-body">
+            <label  class="control-label pull-left col-md-1">时间：</label>
+            <div class="col-md-3">
+                <label class="radio-inline">
+                  <input type="radio" name="time" [(ngModel)]="dateTime" (change)="getTime()" value="hour">最近1小时
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="tiem" [(ngModel)]="dateTime"  (change)="getTime()"  value="day">最近一天
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="time" [(ngModel)]="dateTime" (change)="getTime()" value="month">最近一个月
+                </label>        
+            </div>
+            <div class="col-md-2  date has-feedback m-l-n-xxlg">
+                    <input class="form-control"
+                        dateFormat="YYYY-MM-DD HH:mm"
+                        name="dp" 
+                        [(ngModel)]="startTime" 
+                        [showTimePicker]="true" 
+                        reDatePicker #datePicker1="datePicker"
+                        (click)="datePicker1.toggle($event)"
+                        locale="zh_cn"
+                    >
+                    <span id="startTime" class="form-control-feedback curpoint">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+            </div>
+            <label class="control-label text-left pull-left m-l-n-sm">至</label>
+            <div class="col-md-2  date has-feedback m-l-n-sm">
+                    <input class="form-control"
+                        dateFormat="YYYY-MM-DD HH:mm"
+                        name="dp" 
+                        [(ngModel)]="endTime" 
+                        [showTimePicker]="true" 
+                        reDatePicker #datePicker2="datePicker"
+                        (click)="datePicker2.toggle($event)"
+                        locale="zh_cn"
+                    >
+                    <span id="endTime" class="form-control-feedback curpoint">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+            </div>
+
+            <button (click)="query()" class="btn btn-sm btn-default btn-addon" ng-class="{'disabled':seeks}" ng-disabled="seeks">
+                    <i class="fa fa-search" *ngIf="!seeks"></i>
+                    <i *ngIf="seeks">
+                        <b class="fa fa-spinner no-bordr"  ng-class="{'fa-spin':seeks}"></b>
+                    </i>
+                    <span *ngIf="!seeks">查询</span>
+                    <span *ngIf="seeks">查询中...</span>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading"> 定位折线图 </div>
+        <div class="table-responsive">
+           <chart [options]="options"></chart>
+        </div>
+    </div>
+</div>

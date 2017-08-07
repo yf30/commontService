@@ -1,0 +1,117 @@
+
+
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">基址管理列表视图</h1>
+</div>
+<div class="wrapper-md" >
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">查询</div>
+        
+        <div class="form-horizontal panel-body">
+
+            <label id="sq" class="control-label pull-left col-md-1">创建时间</label>
+            <div class="col-md-2 form-group date has-feedback">
+               
+                <input class="form-control" placeholder="发送时间"
+                    dateFormat="YYYY-MM-DD HH:mm"
+                    name="dp" 
+                    [(ngModel)]="queryParameter.startTime" 
+                    [showTimePicker]="true" 
+                    reDatePicker #datePicker1="datePicker"
+                    (click)="datePicker1.toggle($event)"
+                    locale="zh_cn"
+                >
+                <span id="startTime" class="form-control-feedback curpoint">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+               
+            </div>
+
+             <label id="sq" class="control-label pull-left col-md-1">创建时间</label>
+            <div class="col-md-2 form-group date has-feedback">
+               
+                <input class="form-control" placeholder="发送时间"
+                    dateFormat="YYYY-MM-DD HH:mm"
+                    name="dp" 
+                    [(ngModel)]="queryParameter.endTime" 
+                    [showTimePicker]="true" 
+                    reDatePicker #datePicker2="datePicker"
+                    (click)="datePicker2.toggle($event)"
+                    locale="zh_cn"
+                >
+                <span id="endTime" class="form-control-feedback curpoint">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+               
+            </div>
+            
+
+
+
+            <label class="control-label pull-left  col-md-1">地址</label>
+            <div class="col-md-2 form-group">
+                <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.address" pattern="^1+\d{10}" placeholder="请输入地址">
+            </div>
+
+
+            
+            
+            <!--<div class="line line-xs pull-in"></div>-->
+            <label class="control-label pull-left  col-md-1"></label>
+            <div class="col-md-2 form-group">
+                <button (click)="query()" class="btn btn-sm btn-default btn-addon" ng-class="{'disabled':seeks}" ng-disabled="seeks">
+                    <i class="fa fa-search" *ngIf="!seeks"></i>
+                    <i *ngIf="seeks">
+                        <b class="fa fa-spinner no-bordr"  ng-class="{'fa-spin':seeks}"></b>
+                    </i>
+                    <span *ngIf="!seeks">查询</span>
+                    <span *ngIf="seeks">查询中...</span>
+                </button>
+            </div>
+        </div>
+
+
+        <!--</div>-->
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            
+            定位列表
+            
+        </div>
+       <div class="table-responsive">
+            <table id="position_table" class="table table-hover" >
+                <!--<div class="" >暂无数据</div>-->
+            </table>
+            <div class="no_data" *ngIf="!total" >暂无数据</div>
+          
+          
+        </div>
+        
+    </div>
+    <!--<app-paging [pageLength]="table.pageList" [total]="total" (pageChanged)="pchanged($event)"></app-paging>-->
+
+   
+    <div class="panel-body">
+        <app-pagination 
+                [total]="total" 
+                (pageIndexChange)="pchanged($event)"
+        ></app-pagination> 
+
+     
+    </div>  
+
+
+    <div class="panel-body">
+         
+        <button class="pull-right-xs btn btn-sm btn-primary btn-addon " (click)="export()" ><i class="fa fa-cloud-download"></i>导出</button>
+    
+        <!--<button class="pull-right-xs btn btn-sm btn-primary btn-addon " routerLink="/baseaddress/baseaddressDetail/create" ><i class="fa fa-share-square"></i>创建</button>-->
+        
+    </div>
+
+     
+
+</div>
+
+

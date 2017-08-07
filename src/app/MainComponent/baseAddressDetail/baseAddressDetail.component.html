@@ -1,0 +1,65 @@
+<div class="bg-light lter b-b wrapper-sm">
+    <h1 class="m-n font-thin h4">基址管理详情</h1>
+</div>
+<div class="wrapper-sm">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a routerLink="/app/user/account_info">基址管理详情</a></li>
+    </ul>
+    <div class="form-area">
+        <form id="form" name="step1"  class="form-validation form-horizontal" >
+            <fieldset>
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">创建时间：</label>
+                    <div class="col-lg-2">
+                        <label class=" control-label">{{bestAddress.time | date:"yyyy-MM-dd HH:mm:ss" }}</label>
+                    </div>
+                </div>
+               <div class="form-group">
+                    <label class="col-lg-2 control-label">使用次数：</label>
+                    <div class="col-lg-2">
+                        <label class=" control-label">{{bestAddress.count}}次</label>
+                    </div>
+               </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">上次使用时间：</label>
+                    <div class="col-lg-2">
+                        <label class=" control-label">{{bestAddress.lastModificationTime | date:"yyyy-MM-dd HH:mm:ss" }}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">地址：</label>
+                    <div class="col-lg-2">
+                        <input type="tel" class="form-control input-sm" [(ngModel)]="bestAddress.address" name="address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">经纬度：</label>
+                    <div class="col-lg-2">
+                        <input type="tel" class="form-control input-sm" [(ngModel)]="bestAddress.longitude" name="longitude">
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="tel" class="form-control input-sm" [(ngModel)]="bestAddress.latitude" name="latitude">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">是否锁定：</label>
+                    <div class="checkbox col-lg-2">
+                      <label>
+                        <input type="checkbox"> 锁定
+                      </label>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="col-lg-12 col-md-offset-1">
+              <div id="baiduMap" class="col-lg-8" style="height:400px"></div>  
+            </div>
+            <div class="form-group">
+                <div class="m-t m-b col-lg-9">
+                    <button class="btn btn-sm btn-default btn-rounded pull-right" (click)="save()" >保存</button>
+                    <button class="btn btn-sm btn-default btn-rounded pull-right btn-addon" routerLink="/position/table"><i class="fa fa-reply"></i>返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

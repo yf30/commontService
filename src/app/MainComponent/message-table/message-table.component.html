@@ -1,0 +1,117 @@
+
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">短信管理列表视图</h1>
+</div>
+<div class="wrapper-md" >
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">查询</div>
+        
+        <div class="form-horizontal panel-body">
+            <label id="sq" class="control-label pull-left col-md-1">发送时间</label>
+            <div class="col-md-2 form-group date has-feedback">
+               
+                <input class="form-control" placeholder="发送时间"
+                    dateFormat="YYYY-MM-DD HH:mm"
+                    name="dp" 
+                    [(ngModel)]="queryParameter.sendTime" 
+                    [showTimePicker]="true" 
+                    reDatePicker #datePicker2="datePicker"
+                    (click)="datePicker2.toggle($event)"
+                    locale="zh_cn"
+                >
+                <span id="sendTime" class="form-control-feedback curpoint">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+               
+            </div>
+
+
+
+            <label class="control-label pull-left col-md-1">发送通道</label>
+            <div class="col-md-2 form-group">
+               
+                <select class="form-control" [(ngModel)]="queryParameter.messageChanel">
+                    <option value="">全部</option>
+                    <option *ngFor="let item of messageChanelList" [value]="item.value">{{item.text}}</option>
+                    
+                </select>
+                
+            </div>
+
+
+            <label class="control-label pull-left  col-md-1">模板编号</label>
+            <div class="col-md-2 form-group">
+                <!--<input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.modelCode" placeholder="请输入模板编号">-->
+               
+                <select class="form-control" [(ngModel)]="queryParameter.modelCode">
+                    <option value="">全部</option>
+                    <option *ngFor="let item of templateList" [value]="item.templatesNum">{{item.templatesNum}}</option>
+                    
+                </select>
+                
+           
+            </div>
+
+
+            <label class="control-label pull-left  col-md-1">手机号码</label>
+            <div class="col-md-2 form-group">
+                <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.phoneNumber" pattern="^1+\d{10}" placeholder="请输入手机号码">
+            </div>
+
+
+            <div class="line line-xs pull-in"></div>
+
+            
+           
+            <label class="control-label pull-left  col-md-1"></label>
+            <div class="col-md-2 form-group">
+                <button (click)="query()" class="btn btn-sm btn-default btn-addon" ng-class="{'disabled':seeks}" ng-disabled="seeks">
+                    <i class="fa fa-search" *ngIf="!seeks"></i>
+                    <i *ngIf="seeks">
+                        <b class="fa fa-spinner no-bordr"  ng-class="{'fa-spin':seeks}"></b>
+                    </i>
+                    <span *ngIf="!seeks">查询</span>
+                    <span *ngIf="seeks">查询中...</span>
+                </button>
+            </div>
+        </div>
+
+
+        <!--</div>-->
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            
+            消息
+            
+        </div>
+       <div class="table-responsive">
+            <table id="message_table" class="table table-hover" >
+                
+            </table>
+            <div class="no_data" *ngIf="!total" >暂无数据</div>
+          
+        </div>
+       
+        
+    </div>
+    <!--<app-paging [pageLength]="table.pageList" [total]="total" (pageChanged)="pchanged($event)"></app-paging>-->
+
+   
+    <div class="panel-body">
+        <app-pagination 
+                [total]="total" 
+                (pageIndexChange)="pchanged($event)"
+        ></app-pagination> 
+
+     
+    </div>  
+    <div class="panel-body">
+        <button class="pull-right-xs btn btn-sm btn-primary btn-addon " (click)="export()" ><i class="fa fa-cloud-download"></i>导出</button>
+        <button class="pull-right-xs btn btn-sm btn-primary btn-addon " routerLink="/app/location/locationChart" ><i class="fa fa-cog"></i>配置</button>
+        
+    </div>
+
+     
+
+</div>

@@ -1,0 +1,55 @@
+.navi ul.nav li a:focus,
+a:hover {
+    background-color: #16232d;
+    width: 100%;
+}
+
+.navi a {}
+
+.navi span {
+    font-size: 14px;
+    color: #869fb1;
+}
+
+.nav-left-sub a {
+    padding-left: 0;
+}
+
+.aaa {
+    color: #ffffff;
+    width: 100%;
+}
+
+.aaa ul {
+    display: inline-block;
+    background-color: #131e26;
+    width: 100%;
+}
+
+.nav-li ul {
+    display: none;
+}
+
+.active ul {
+    display: inline-block;
+}
+
+.line {
+    height: 2px;
+}
+
+.width {
+    width: 200px;
+}
+
+.nav-tabs>li.active>a {
+    border: none;
+}
+
+.nav-tabs>li>a {
+    border: none;
+}
+
+.nav-tabs {
+    border: none;
+}

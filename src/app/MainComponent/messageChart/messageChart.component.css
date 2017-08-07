@@ -1,0 +1,12 @@
+chart {
+    display: block;
+    min-width: 400px;
+    max-width: 100%;
+    max-height: 600px;
+    min-height: 600px;
+    /*margin-left:18%; */
+}
+.table-head{
+    overflow-x: auto;
+    padding: 20px 0;
+}

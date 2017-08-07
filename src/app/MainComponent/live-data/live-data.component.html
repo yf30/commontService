@@ -1,0 +1,146 @@
+
+
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">消息管理列表视图</h1>
+</div>
+<div class="wrapper-md" >
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">查询</div>
+        
+        <div class="form-horizontal panel-body">
+            <label id="sq" class="control-label pull-left col-md-1">发送时间</label>
+            <div class="col-md-2 form-group date has-feedback">
+               
+                <input class="form-control" placeholder="发送时间"
+                    dateFormat="YYYY-MM-DD HH:mm"
+                    name="dp" 
+                    [(ngModel)]="queryParameter.startTime" 
+                    [showTimePicker]="true" 
+                    reDatePicker #datePicker1="datePicker"
+                    (click)="datePicker1.toggle($event)"
+                    locale="zh_cn"
+                >
+                <span id="sendStartTime" class="form-control-feedback curpoint">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+               
+            </div>
+
+            <label id="sq" class="control-label pull-left col-md-1">发送结束时间</label>
+            <div class="col-md-2 form-group date has-feedback">
+               
+                <input class="form-control" placeholder="发送时间"
+                    dateFormat="YYYY-MM-DD HH:mm"
+                    name="dp" 
+                    [(ngModel)]="queryParameter.endTime" 
+                    [showTimePicker]="true" 
+                    reDatePicker #datePicker2="datePicker"
+                    (click)="datePicker2.toggle($event)"
+                    locale="zh_cn"
+                >
+                <span id="sendEndTime" class="form-control-feedback curpoint">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+               
+            </div>
+
+
+
+            <label class="control-label pull-left col-md-1">内容</label>
+            <div class="col-md-2 form-group">
+                <!--ng-pattern="/^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{5}$/"-->
+                <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.content" placeholder="请输入内容" name="carCode">
+            </div>
+
+
+            <label class="control-label pull-left  col-md-1">用户编号</label>
+            <div class="col-md-2 form-group">
+                <input type="text" class="form-control" id="fa-searchz" [(ngModel)]="queryParameter.userCode" placeholder="请输入用户编号">
+            </div>
+
+            <div class="line line-xs pull-in"></div>
+
+            <label class="control-label pull-left  col-md-1">是否送达</label>
+            <div class="col-md-2 form-group">
+
+                <span class="hasSended">
+                    <input type="radio" name="hasSended" (change)="select(0)" ><label for="all">全部</label>
+                    <input type="radio" name="hasSended" (change)="select(1)" ><label for="sended">是</label>
+                    <input type="radio" name="hasSended" (change)="select(2)" ><label for="notsended">否</label>
+                </span>
+
+            </div>
+
+
+
+            <label class="control-label pull-left  col-md-1">消息类型</label>
+            <div class="col-md-2 form-group">
+                 <select class="form-control" [(ngModel)]="queryParameter.TT">
+                        <option value="" >全部</option>
+                        <option *ngFor="let item of messageTypeList " [value]="item.num">{{item.text}}</option>
+                </select>
+                
+            </div>
+
+
+            
+
+            
+           
+
+
+          
+            <label class="control-label pull-left  col-md-1"></label>
+            <div class="col-md-2 form-group">
+                <button (click)="query()" class="btn btn-sm btn-default btn-addon" ng-class="{'disabled':seeks}" ng-disabled="seeks">
+                    <i class="fa fa-search" *ngIf="!seeks"></i>
+                    <i *ngIf="seeks">
+                        <b class="fa fa-spinner no-bordr"  ng-class="{'fa-spin':seeks}"></b>
+                    </i>
+                    <span *ngIf="!seeks">查询</span>
+                    <span *ngIf="seeks">查询中...</span>
+                </button>
+            </div>
+        </div>
+
+
+        <!--</div>-->
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            
+            短信列表
+            
+        </div>
+       <div class="table-responsive">
+            <table id="liveData_table" class="table table-hover" >
+                <!--<div class="" >暂无数据</div>-->
+            </table>
+            <div class="no_data" *ngIf="!total" >暂无数据</div>
+          
+          
+        </div>
+        
+    </div>
+    <!--<app-paging [pageLength]="table.pageList" [total]="total" (pageChanged)="pchanged($event)"></app-paging>-->
+
+   
+    <div class="panel-body">
+        <app-pagination 
+                [total]="total" 
+                (pageIndexChange)="pchanged($event)"
+        ></app-pagination> 
+
+     
+    </div>
+    <div class="panel-body">
+        <button class="pull-right-xs btn btn-sm btn-primary btn-addon " (click)="export()" ><i class="fa fa-cloud-download"></i>导出</button>
+    
+    </div>  
+
+
+     
+
+</div>
+
+
